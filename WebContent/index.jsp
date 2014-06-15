@@ -8,14 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="bootstrap_css/bootstrap.css" />
+<link rel="stylesheet" href="bootstrap_css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="customize_css/index.css" />
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
+<script src="jquery/jquery-1.11.1.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <title>Home - NoteOnline</title>
 </head>
 <body>
-
 
 	<div class="container header">
 		<div class="masthead">
@@ -23,11 +24,10 @@
 				<a href="index.jsp" style="color: black;">NoteOnline</a>
 			</h1>
 			<ul class="nav nav-pills pull-right top-nav">
-				<li class="top-nav-item"><a href="#university">University
-						list</a></li>
-				<li class="top-nav-item"><a href="#university">Your note</a></li>
-				<li class="top-nav-item"><a href="#university">Contact us</a></li>
-				<li class="top-nav-item"><a href="#university">Sign in</a></li>
+				<li class="top-nav-item"><a href="#uni">University list</a></li>
+				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
+				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
 			</ul>
 		</div>
 	</div>
@@ -41,75 +41,150 @@
 				Started Free</button>
 		</div>
 	</div>
+
 	<%
 		UniDatabaseManager dm = new UniDatabaseManager();
 		List<University> ul = dm.universityList();
+		List<Integer> uIdList = new ArrayList<Integer>();
+		List<String> uNameList = new ArrayList<String>();
+		List<String> uLocationList = new ArrayList<String>();
+		List<String> uIntroList = new ArrayList<String>();
 		
-		int uId0 = ul.get(0).getId();
-		String uName0 = ul.get(0).getName();
-		String uLocation0 = ul.get(0).getLocation();
-		String uIntro0 = ul.get(0).getIntro();
-		
-		int uId1 = ul.get(1).getId();
-		String uName1 = ul.get(1).getName();
-		String uLocation1 = ul.get(1).getLocation();
-		String uIntro1 = ul.get(1).getIntro();
+		for (int i=0; i<ul.size(); i++){
+			int uId = ul.get(i).getId();
+			String uName = ul.get(i).getName();
+			String uLocation = ul.get(i).getLocation();
+			String uIntro = ul.get(i).getIntro();
+			
+			uIdList.add(uId);
+			uNameList.add(uName);
+			uLocationList.add(uLocation);
+			uIntroList.add(uIntro);
+		}
 	%>
-	<div class="container university-list" id="university">
-		<div class="university-name">
-			<h4 class="col-md-4">
-				<img src="image/uni_icon/otago.ico" class="icon"><a
-					href="university_of_otago.jsp" style="color: #333333;"> <%
- 	out.print(uName0);
+	<div class="container uni-list" id="uni">
+		<div class="row">
+			<div class="uni-name">
+				<h4 class="col-md-4">
+					<img src="image/uni_icon/otago.png" class="icon"><a
+						href="uni_of_otago.jsp" style="color: #333333;"> <%
+ 	out.print(uNameList.get(0));
  %>
-				</a>
-			</h4>
-			<h4 class="col-md-4">
-				<img src="image/uni_icon/rice.ico" class="icon"><a
-					href="rice_university.jsp" style="color: #333333;"> <%
- 	out.print(uName1);
+					</a>
+				</h4>
+				<h4 class="col-md-4">
+					<img src="image/uni_icon/rice.jpeg" class="icon"><a
+						href="rice_uni.jsp" style="color: #333333;"> <%
+ 	out.print(uNameList.get(1));
  %>
-				</a>
-			</h4>
-			<h4 class="col-md-4">
-				<img src="image/book-icon.png" class="icon">Looking for you university?
-			</h4>
+					</a>
+				</h4>
+				<h4 class="col-md-4">
+					<img src="image/uni_icon/nus.jpg" class="icon">
+					<%
+						out.print(uNameList.get(2));
+					%>
+				</h4>
+			</div>
 		</div>
-		<div class="uni-intro">
-			<div class="col-md-4">
-				<%
-					out.print(uIntro0);
-				%>
+		<div class="row">
+			<div class="uni-intro">
+				<div class="col-md-4">
+					<%
+						out.print(uIntroList.get(0));
+					%>
+				</div>
+				<div class="col-md-4">
+					<%
+						out.print(uIntroList.get(1));
+					%>
+				</div>
+				<div class="col-md-4">
+					<%
+						out.print(uIntroList.get(2));
+					%>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<%
-					out.print(uIntro1);
-				%>
-			</div>
-			<div class="col-md-4">Come and join us!</div>
 		</div>
 	</div>
 
-	<!--
-	<div class="container row2">
-		<div class="university-name">
-			<h4 class="col-md-4">
-				<img src="image/book-icon.png" class="icon">To be continued...
-			</h4>
-			<h4 class="col-md-4">
-				<img src="image/book-icon.png" class="icon">To be continued...
-			</h4>
-			<h4 class="col-md-4">
-				<img src="image/book-icon.png" class="icon">To be continued...
-			</h4>
+	<div class="container uni-list">
+		<div class="row">
+			<div class="uni-name">
+				<h4 class="col-md-4">
+					<img src="image/uni_icon/maryland.jpg" class="icon">
+					<%
+						out.print(uNameList.get(3));
+					%>
+				</h4>
+				<h4 class="col-md-4">Looking for your university?</h4>
+				<h4 class="col-md-4"></h4>
+			</div>
 		</div>
-		<div class="book-intro">
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+		<div class="row">
+			<div class="uni-intro">
+				<div class="col-md-4">
+					<%
+						out.print(uIntroList.get(3));
+					%>
+				</div>
+				<div class="col-md-4">Come and Join Us!</div>
+				<div class="col-md-4"></div>
+			</div>
 		</div>
 	</div>
-	-->
+
+	<div class="container horizontal-line"></div>
+
+	<div class="container mooc" id="mooc">
+		<div id="moocCarousel" class="carousel slide pull right"
+			data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#moocCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#moocCarousel" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3 mooc-logo">
+								<img src="image/mooc/udacity.png">
+							</div>
+							<div class="col-md-9">
+								<p class="mooc-intro">
+									<i>"Udacity helped Brent, a business school student with a
+										finance background, land his dream product management
+										internship at Google. Brent recently turned his dream
+										internship into his dream job, and is now a Product Manager at
+										Google."</i>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3 mooc-logo">
+								<img src="image/mooc/coursera.jpg">
+							</div>
+							<div class="col-md-9">
+								<p class="mooc-intro">
+									<i>"Coursera works with universities to make some of their
+										courses available online, and offers courses in physics,
+										engineering, humanities, medicine, biology,social sciences,
+										mathematics, business, computer science, and other subjects."</i>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container horizontal-line"></div>
 
 	<div class="footer">
 		<div class="container">
@@ -128,7 +203,6 @@
 			<div class="row contact2">
 				<div class="col-md-12" id="copyright">Made by Alan Wei in
 					Hangzhou China, June 2014</div>
-				<!--<div class="col-md-6" id="copyright">© 2012-2014</div>-->
 			</div>
 		</div>
 	</div>
