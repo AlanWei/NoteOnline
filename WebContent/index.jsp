@@ -18,30 +18,6 @@
 </head>
 <body>
 
-	<div class="container header">
-		<div class="masthead">
-			<h1>
-				<a href="index.jsp" style="color: black;">NoteOnline</a>
-			</h1>
-			<ul class="nav nav-pills pull-right top-nav">
-				<li class="top-nav-item"><a href="#uni">University list</a></li>
-				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
-				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
-				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="home"
-		style="background-image: url(image/Library-Books.jpg)">
-		<div class="intro">
-			<h3>Share Notes with the World</h3>
-			<p class="subtitle">Knowledge needs spreading.</p>
-			<button id="start-btn" class="btn btn-success btn-lg">Get
-				Started Free</button>
-		</div>
-	</div>
-
 	<%
 		UniDatabaseManager dm = new UniDatabaseManager();
 		List<University> ul = dm.universityList();
@@ -62,28 +38,57 @@
 			uIntroList.add(uIntro);
 		}
 	%>
+
+	<div class="container header">
+		<div class="masthead">
+			<h1>
+				<a href="index.jsp" style="color: black;">NoteOnline</a>
+			</h1>
+			<ul class="nav nav-pills pull-right top-nav">
+				<li class="top-nav-item"><a href="#uni">University</a></li>
+				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
+				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="home"
+		style="background-image: url(image/Library-Books.jpg)">
+		<div class="intro">
+			<h3>Share Notes with the World</h3>
+			<p class="subtitle">Knowledge needs spreading.</p>
+			<button id="start-btn" class="btn btn-success btn-lg">Get
+				Started Free</button>
+		</div>
+	</div>
+
 	<div class="container uni-list" id="uni">
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
 					<img src="image/uni_icon/otago.png" class="icon"><a
-						href="uni_of_otago.jsp" style="color: #333333;"> <%
+						href="uni.url?id=<%out.print(uIdList.get(0));%>"
+						style="color: #333333;"> <%
  	out.print(uNameList.get(0));
  %>
 					</a>
 				</h4>
 				<h4 class="col-md-4">
 					<img src="image/uni_icon/rice.jpeg" class="icon"><a
-						href="rice_uni.jsp" style="color: #333333;"> <%
+						href="uni.url?id=<%out.print(uIdList.get(1));%>"
+						style="color: #333333;"> <%
  	out.print(uNameList.get(1));
  %>
 					</a>
 				</h4>
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/nus.jpg" class="icon">
-					<%
-						out.print(uNameList.get(2));
-					%>
+					<img src="image/uni_icon/nus.jpg" class="icon"><a
+						href="uni.url?id=<%out.print(uIdList.get(2));%>"
+						style="color: #333333;"> <%
+ 	out.print(uNameList.get(2));
+ %>
+					</a>
 				</h4>
 			</div>
 		</div>
@@ -112,10 +117,12 @@
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/maryland.jpg" class="icon">
-					<%
-						out.print(uNameList.get(3));
-					%>
+					<img src="image/uni_icon/maryland.jpg" class="icon"><a
+						href="uni.url?id=<%out.print(uIdList.get(3));%>"
+						style="color: #333333;"> <%
+ 	out.print(uNameList.get(3));
+ %>
+					</a>
 				</h4>
 				<h4 class="col-md-4">Looking for your university?</h4>
 				<h4 class="col-md-4"></h4>
@@ -128,7 +135,7 @@
 						out.print(uIntroList.get(3));
 					%>
 				</div>
-				<div class="col-md-4">Come and Join Us!</div>
+				<div class="col-md-4">Come and join us!</div>
 				<div class="col-md-4"></div>
 			</div>
 		</div>

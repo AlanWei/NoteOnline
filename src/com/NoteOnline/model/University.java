@@ -8,6 +8,7 @@ public class University {
 	private String location;
 
 	public University(int id, String name, String intro, String location) {
+		this.id = id;
 		this.name = name;
 		this.intro = intro;
 		this.location = location;

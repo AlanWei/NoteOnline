@@ -4,28 +4,26 @@
 <%@ page import="com.NoteOnline.db.*"%>
 <%@ page import="java.util.*"%>
 
+<%
+	session = request.getSession();
+	String id = (String) session.getAttribute("id");
+	String name = (String) session.getAttribute("name");
+	String location = (String) session.getAttribute("location");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dth">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
-	href="bootstrap_css/bootstrap.css" />
+	href="bootstrap_css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="customize_css/university_of_otago.css" />
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
-<title>University of Otago - NoteOnline</title>
+<title><% out.print(name); %> - NoteOnline</title>
 </head>
 <body>
 
-	<%
-		UniDatabaseManager dm = new UniDatabaseManager();
-		List<University> ul = dm.universityList();
-		
-		int uId0 = ul.get(0).getId();
-		String uName0 = ul.get(0).getName();
-		String uLocation0 = ul.get(0).getLocation();
-		String uIntro0 = ul.get(0).getIntro();
-	%>
 	<div class="container header">
 		<div class="masthead">
 			<h1>
@@ -44,21 +42,22 @@
 	</div>
 
 	<div class="home"
-		style="background-image: url(image/otago/otago_view.jpg)"></div>
+		style="background-image: url(image/uni/<%out.print(id);%>/<%out.print(id);%>_view.jpg)"></div>
 
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="profile">
-					<img src="image/otago/otago_logo.png" class="img-thumbnail">
+					<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
+						class="img-thumbnail">
 					<h1>
 						<%
-							out.print(uName0);
+							out.print(name);
 						%>
 					</h1>
 					<h2>
 						<%
-							out.print(uLocation0);
+							out.print(location);
 						%>
 					</h2>
 				</div>
@@ -97,8 +96,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<div class="footer">
+
+	<div class="footer">
 		<div class="container">
 			<div class="row contact1">
 				<!--
