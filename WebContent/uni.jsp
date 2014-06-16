@@ -73,7 +73,7 @@
 
 	<div class="container profile">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 uni-logo">
 				<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
 					class="img-thumbnail">
 				<h1>
@@ -93,23 +93,38 @@
 	<div class="container course">
 		<%
 			for (int i=0; i<cIdList.size();i++){
-				
 		%>
-		<div class="row">
-			<div class="col-md-4">
-			</div>
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col-md-4"></div>
 			<div class="col-md-8">
 				<div class="panel panel-info">
 					<p class="panel-heading"
 						style="font-size: 20px; text-align: center; font-weight: bold;">
 						<%
 							out.print(cCodeList.get(i));
-						%><br><% out.print(cNameList.get(i)); %>
+						%><br>
+						<%
+							out.print(cNameList.get(i));
+						%>
 					</p>
+
 					<div class="panel-body">
 						<ul class="override ul">
-							<li>Revision Checklist 2013</li>
-							<li>Revision Checklist 2013 Preparation</li>
+							<%
+								NoteDatabaseManager nDm = new NoteDatabaseManager();
+								List<Note> noteList = nDm.noteList(cIdList.get(i)); 
+								for (int j=0; j<noteList.size(); j++){
+									String noteName = noteList.get(j).getNoteName();
+									int noteId = noteList.get(j).getNoteId();
+							%>
+							<li><a href="note.url?note_id=<% out.print(noteId); %>">
+								<%
+									out.print(noteName);
+								%>
+							</a></li>
+							<%
+								}
+							%>
 						</ul>
 					</div>
 				</div>
