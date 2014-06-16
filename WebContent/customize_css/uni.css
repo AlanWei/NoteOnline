@@ -35,22 +35,25 @@
 	z-index: -1;
 }
 
-.profile {
+.container.profile {
 	text-align: left;
-	width: 330px;
 	margin-top: -105px;
 	/*margin-left: -110px;*/
 }
 
-.profile>h1 {
+.col-md-4>h1 {
 	font-size: 26px;
 	font-weight: bold;
 }
 
-.profile>h2 {
+.col-md-4>h2 {
 	margin-top: -1px;
 	font-size: 18px;
 	color: #545454;
+}
+
+.container.course{
+	margin-top: -120px;
 }
 
 .panel.panel-info {
@@ -71,6 +74,7 @@
 	margin-top: 50px;
 	height: 160px;
 	color: #7f7f7f;
+	position: absolute;
 }
 
 .row.contact1 {

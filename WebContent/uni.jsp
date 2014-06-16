@@ -11,16 +11,43 @@
 	String location = (String) session.getAttribute("location");
 %>
 
+<%
+	CourseDatabaseManager cDm = new CourseDatabaseManager();
+	List<Course> cl = null;
+	int i_uniId = Integer.parseInt(id);
+	cl = cDm.courseList(i_uniId);
+
+	List<Integer> cIdList = new ArrayList<Integer>();
+	List<String> cCodeList = new ArrayList<String>();
+	List<String> cNameList = new ArrayList<String>();
+	List<String> cIntroList = new ArrayList<String>();
+	
+	for (int k = 0; k < cl.size(); k++) {
+		int cId = cl.get(k).getCourseId();
+		String cCode = cl.get(k).getCourseCode();
+		String cName = cl.get(k).getCourseName();
+		String cIntro = cl.get(k).getCourseIntro();
+		
+		cIdList.add(cId);
+		cCodeList.add(cCode);
+		cNameList.add(cName);
+		cIntroList.add(cIntro);
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dth">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="bootstrap_css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="customize_css/university_of_otago.css" />
+<link rel="stylesheet" type="text/css" href="customize_css/uni.css" />
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
-<title><% out.print(name); %> - NoteOnline</title>
+<title>
+	<%
+		out.print(name);
+	%> - NoteOnline
+</title>
 </head>
 <body>
 
@@ -44,29 +71,40 @@
 	<div class="home"
 		style="background-image: url(image/uni/<%out.print(id);%>/<%out.print(id);%>_view.jpg)"></div>
 
-	<div class="container content">
+	<div class="container profile">
 		<div class="row">
 			<div class="col-md-4">
-				<div class="profile">
-					<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
-						class="img-thumbnail">
-					<h1>
-						<%
-							out.print(name);
-						%>
-					</h1>
-					<h2>
-						<%
-							out.print(location);
-						%>
-					</h2>
-				</div>
+				<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
+					class="img-thumbnail">
+				<h1>
+					<%
+						out.print(name);
+					%>
+				</h1>
+				<h2>
+					<%
+						out.print(location);
+					%>
+				</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container course">
+		<%
+			for (int i=0; i<cIdList.size();i++){
+				
+		%>
+		<div class="row">
+			<div class="col-md-4">
 			</div>
 			<div class="col-md-8">
 				<div class="panel panel-info">
 					<p class="panel-heading"
 						style="font-size: 20px; text-align: center; font-weight: bold;">
-						INFO211<br>Systems Analysis, Design and Modelling
+						<%
+							out.print(cCodeList.get(i));
+						%><br><% out.print(cNameList.get(i)); %>
 					</p>
 					<div class="panel-body">
 						<ul class="override ul">
@@ -77,25 +115,11 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-8">
-				<div class="panel panel-info">
-					<p class="panel-heading"
-						style="font-size: 20px; text-align: center; font-weight: bold;">
-						INFO213<br>Business ICT Strategy
-					</p>
-					<div class="panel-body">
-						<ul class="override ul">
-							<li>Final Revision 2013</li>
-							<li>Things will be tested</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+		<%
+			}
+		%>
 	</div>
+
 
 	<div class="footer">
 		<div class="container">

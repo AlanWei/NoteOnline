@@ -40,10 +40,10 @@ public class UniUrlHandler extends HttpServlet {
 		String id = request.getParameter("id");
 		HttpSession session = request.getSession(true);
 		session.setAttribute("id", id);
-		UniDatabaseManager dm = new UniDatabaseManager();
+		UniDatabaseManager uDm = new UniDatabaseManager();
 		List<University> ul = null;
 		try {
-			ul = dm.universityList();
+			ul = uDm.universityList();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
