@@ -42,7 +42,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="bootstrap_css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="customize_css/uni.css" />
+<link rel="stylesheet" type="text/css" href="customize_css/note.css" />
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
 <title>
 	<%
@@ -90,20 +90,31 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container">
+
+	<div class="container content">
 		<div class="row">
-			<div class="col-md-12">
-				<% 
-				NoteDatabaseManager nDm = new NoteDatabaseManager();
-				int i_noteId = Integer.parseInt(noteId);
-				String noteContent = nDm.getNoteContent(i_noteId);
-				out.print(noteContent);
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<%
+					NoteDatabaseManager nDm = new NoteDatabaseManager();
+										int i_noteId = Integer.parseInt(noteId);
+										String noteName = nDm.getNoteName(i_noteId);
+										String noteContent = nDm.getNoteContent(i_noteId);
 				%>
+				<h1 style="text-align: center;">
+					<%
+						out.print(noteName);
+					%>
+				</h1>
+				<div class="container horizontal-line"></div>
+				<%
+					out.print(noteContent);
+				%>
+				<div class="container horizontal-line"></div>
 			</div>
 		</div>
 	</div>
-	
+
 
 
 	<div class="footer">

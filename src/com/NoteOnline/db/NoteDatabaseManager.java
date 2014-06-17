@@ -98,4 +98,17 @@ public class NoteDatabaseManager {
 		}
 		return noteContent;
 	}
+	
+	public String getNoteName(int noteId) throws SQLException {
+		NoteDatabaseManager dm = new NoteDatabaseManager();
+		String s_noteId = Integer.toString(noteId);
+		String sql = "select note_name from note where note_id = "
+				+ s_noteId + ";";
+		ResultSet rs = dm.sqlQuery(sql);
+		String noteName = null;
+		while (rs.next()) {
+			noteName = rs.getString("note_name");
+		}
+		return noteName;
+	}
 }
