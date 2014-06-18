@@ -20,23 +20,23 @@
 
 	<%
 		UniDatabaseManager dm = new UniDatabaseManager();
-		List<University> ul = dm.universityList();
-		List<Integer> uIdList = new ArrayList<Integer>();
-		List<String> uNameList = new ArrayList<String>();
-		List<String> uLocationList = new ArrayList<String>();
-		List<String> uIntroList = new ArrayList<String>();
-		
-		for (int i=0; i<ul.size(); i++){
-			int uId = ul.get(i).getId();
-			String uName = ul.get(i).getName();
-			String uLocation = ul.get(i).getLocation();
-			String uIntro = ul.get(i).getIntro();
+			List<University> ul = dm.universityList();
+			List<Integer> uIdList = new ArrayList<Integer>();
+			List<String> uNameList = new ArrayList<String>();
+			List<String> uLocationList = new ArrayList<String>();
+			List<String> uIntroList = new ArrayList<String>();
 			
-			uIdList.add(uId);
-			uNameList.add(uName);
-			uLocationList.add(uLocation);
-			uIntroList.add(uIntro);
-		}
+			for (int i=0; i<ul.size(); i++){
+		int uId = ul.get(i).getId();
+		String uName = ul.get(i).getName();
+		String uLocation = ul.get(i).getLocation();
+		String uIntro = ul.get(i).getIntro();
+		
+		uIdList.add(uId);
+		uNameList.add(uName);
+		uLocationList.add(uLocation);
+		uIntroList.add(uIntro);
+			}
 	%>
 
 	<div class="container header">
@@ -67,24 +67,27 @@
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/otago.png" class="icon"><a
-						href="uni.url?id=<%out.print(uIdList.get(0));%>"
+					<img src="image/uni_icon/<%out.print(uIdList.get(0));%>.jpg"
+						class="icon"><a
+						href="uni.url?uni_id=<%out.print(uIdList.get(0));%>"
 						style="color: #333333;"> <%
  	out.print(uNameList.get(0));
  %>
 					</a>
 				</h4>
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/rice.jpeg" class="icon"><a
-						href="uni.url?id=<%out.print(uIdList.get(1));%>"
+					<img src="image/uni_icon/<%out.print(uIdList.get(1));%>.jpg"
+						class="icon"><a
+						href="uni.url?uni_id=<%out.print(uIdList.get(1));%>"
 						style="color: #333333;"> <%
  	out.print(uNameList.get(1));
  %>
 					</a>
 				</h4>
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/nus.jpg" class="icon"><a
-						href="uni.url?id=<%out.print(uIdList.get(2));%>"
+					<img src="image/uni_icon/<%out.print(uIdList.get(2));%>.jpg"
+						class="icon"><a
+						href="uni.url?uni_id=<%out.print(uIdList.get(2));%>"
 						style="color: #333333;"> <%
  	out.print(uNameList.get(2));
  %>
@@ -117,8 +120,8 @@
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/maryland.jpg" class="icon"><a
-						href="uni.url?id=<%out.print(uIdList.get(3));%>"
+					<img src="image/uni_icon/<% out.print(uIdList.get(3)); %>.jpg" class="icon"><a
+						href="uni.url?uni_id=<% out.print(uIdList.get(3)); %>"
 						style="color: #333333;"> <%
  	out.print(uNameList.get(3));
  %>

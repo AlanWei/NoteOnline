@@ -37,9 +37,9 @@ public class UniUrlHandler extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
+		String uniId = request.getParameter("uni_id");
 		HttpSession session = request.getSession(true);
-		session.setAttribute("id", id);
+		session.setAttribute("uni_id", uniId);
 		UniDatabaseManager uDm = new UniDatabaseManager();
 		List<University> ul = null;
 		try {
@@ -66,12 +66,12 @@ public class UniUrlHandler extends HttpServlet {
 		}
 
 		for (int j = 0; j < uIdList.size(); j++) {
-			int u_id = Integer.parseInt(id);
+			int u_id = Integer.parseInt(uniId);
 			if (u_id == uIdList.get(j)) {
 				String uniName = uNameList.get(j);
-				session.setAttribute("name", uniName);
+				session.setAttribute("uni_name", uniName);
 				String uniLocation = uLocationList.get(j);
-				session.setAttribute("location", uniLocation);
+				session.setAttribute("uni_location", uniLocation);
 			}
 		}
 

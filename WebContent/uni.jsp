@@ -6,15 +6,15 @@
 
 <%
 	session = request.getSession();
-	String id = (String) session.getAttribute("id");
-	String name = (String) session.getAttribute("name");
-	String location = (String) session.getAttribute("location");
+	String uniId = (String) session.getAttribute("uni_id");
+	String uniName = (String) session.getAttribute("uni_name");
+	String uniLocation = (String) session.getAttribute("uni_location");
 %>
 
 <%
 	CourseDatabaseManager cDm = new CourseDatabaseManager();
 	List<Course> cl = null;
-	int i_uniId = Integer.parseInt(id);
+	int i_uniId = Integer.parseInt(uniId);
 	cl = cDm.courseList(i_uniId);
 
 	List<Integer> cIdList = new ArrayList<Integer>();
@@ -45,7 +45,7 @@
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
 <title>
 	<%
-		out.print(name);
+		out.print(uniName);
 	%> - NoteOnline
 </title>
 </head>
@@ -69,21 +69,22 @@
 	</div>
 
 	<div class="home"
-		style="background-image: url(image/uni/<%out.print(id);%>/<%out.print(id);%>_view.jpg)"></div>
+		style="background-image: url(image/uni/<%out.print(uniId);%>/<%out.print(uniId);%>_view.jpg)"></div>
 
 	<div class="container profile">
 		<div class="row">
 			<div class="col-md-4 uni-logo">
-				<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
+				<img
+					src="image/uni/<%out.print(uniId);%>/<%out.print(uniId);%>_logo.jpg"
 					class="img-thumbnail">
 				<h1>
 					<%
-						out.print(name);
+						out.print(uniName);
 					%>
 				</h1>
 				<h2>
 					<%
-						out.print(location);
+						out.print(uniLocation);
 					%>
 				</h2>
 			</div>
@@ -112,15 +113,16 @@
 						<ul class="override ul">
 							<%
 								NoteDatabaseManager nDm = new NoteDatabaseManager();
-								List<Note> noteList = nDm.noteList(cIdList.get(i)); 
-								for (int j=0; j<noteList.size(); j++){
-									String noteName = noteList.get(j).getNoteName();
-									int noteId = noteList.get(j).getNoteId();
+													List<Note> noteList = nDm.noteList(cIdList.get(i)); 
+													for (int j=0; j<noteList.size(); j++){
+														String noteName = noteList.get(j).getNoteName();
+														int noteId = noteList.get(j).getNoteId();
 							%>
-							<li><a href="note.url?note_id=<% out.print(noteId); %>">
-								<%
-									out.print(noteName);
-								%>
+							<li><a
+								href="note.url?course_id=<%out.print(cIdList.get(i));%>&note_id=<%out.print(noteId);%>">
+									<%
+										out.print(noteName);
+									%>
 							</a></li>
 							<%
 								}

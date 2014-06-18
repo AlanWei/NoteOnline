@@ -31,9 +31,11 @@ public class NoteUrlHandler extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String courseId = request.getParameter("course_id");
 		String noteId = request.getParameter("note_id");
 		HttpSession session = request.getSession(true);
-		session.setAttribute("noteId", noteId);
+		session.setAttribute("course_id", courseId);
+		session.setAttribute("note_id", noteId);
 		response.sendRedirect("note.jsp");
 	}
 

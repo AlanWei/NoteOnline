@@ -6,34 +6,18 @@
 
 <%
 	session = request.getSession();
-	String id = (String) session.getAttribute("id");
-	String name = (String) session.getAttribute("name");
-	String location = (String) session.getAttribute("location");
-	String noteId = (String) session.getAttribute("noteId");
+	String uniId = (String) session.getAttribute("uni_id");
+	String uniName = (String) session.getAttribute("uni_name");
+	String uniLocation = (String) session.getAttribute("uni_location");
+	String courseId = (String) session.getAttribute("course_id");
+	String noteId = (String) session.getAttribute("note_id");
 %>
 
 <%
 	CourseDatabaseManager cDm = new CourseDatabaseManager();
-	List<Course> cl = null;
-	int i_uniId = Integer.parseInt(id);
-	cl = cDm.courseList(i_uniId);
-
-	List<Integer> cIdList = new ArrayList<Integer>();
-	List<String> cCodeList = new ArrayList<String>();
-	List<String> cNameList = new ArrayList<String>();
-	List<String> cIntroList = new ArrayList<String>();
-	
-	for (int k = 0; k < cl.size(); k++) {
-		int cId = cl.get(k).getCourseId();
-		String cCode = cl.get(k).getCourseCode();
-		String cName = cl.get(k).getCourseName();
-		String cIntro = cl.get(k).getCourseIntro();
-		
-		cIdList.add(cId);
-		cCodeList.add(cCode);
-		cNameList.add(cName);
-		cIntroList.add(cIntro);
-	}
+	NoteDatabaseManager nDm = new NoteDatabaseManager();
+	int i_courseId = Integer.parseInt(courseId);
+	String courseName = cDm.getCourseName(i_courseId);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dth">
@@ -46,7 +30,7 @@
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
 <title>
 	<%
-		out.print(name);
+		out.print(uniName);
 	%> - NoteOnline
 </title>
 </head>
@@ -70,23 +54,26 @@
 	</div>
 
 	<div class="home"
-		style="background-image: url(image/uni/<%out.print(id);%>/<%out.print(id);%>_view.jpg)"></div>
+		style="background-image: url(image/uni/<%out.print(uniId);%>/<%out.print(uniId);%>_view.jpg)"></div>
 
 	<div class="container profile">
 		<div class="row">
 			<div class="col-md-4">
-				<img src="image/uni/<%out.print(id);%>/<%out.print(id);%>_logo.jpg"
+				<img src="image/uni/<%out.print(uniId);%>/<%out.print(uniId);%>_logo.jpg"
 					class="img-thumbnail">
 				<h1>
 					<%
-						out.print(name);
+						out.print(uniName);
 					%>
 				</h1>
 				<h2>
 					<%
-						out.print(location);
+						out.print(uniLocation);
 					%>
 				</h2>
+				<div><%
+					out.print(courseName);
+				%></div>
 			</div>
 		</div>
 	</div>
@@ -96,7 +83,6 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-8">
 				<%
-					NoteDatabaseManager nDm = new NoteDatabaseManager();
 										int i_noteId = Integer.parseInt(noteId);
 										String noteName = nDm.getNoteName(i_noteId);
 										String noteContent = nDm.getNoteContent(i_noteId);
