@@ -143,7 +143,7 @@ public class NoteDatabaseManager {
 	
 	public List<String> getHeader(String content){
 		List<String> results = new ArrayList<String>();
-		Pattern p = Pattern.compile("<strong>(.*?)</strong>");
+		Pattern p = Pattern.compile("<h3><strong>(.*?)</strong></h3>");
 		Matcher m = p.matcher(content);
 		while (!m.hitEnd() && m.find()){
 			results.add(m.group(1));
@@ -153,7 +153,7 @@ public class NoteDatabaseManager {
 	
 	public List<String> getHref(String content){
 		List<String> results = new ArrayList<String>();
-		Pattern p = Pattern.compile("<h3 id=\"(.*?)\">");
+		Pattern p = Pattern.compile("<a class=\"anchor\" id=\"(.*?)\">");
 		Matcher m = p.matcher(content);
 		while (!m.hitEnd() && m.find()){
 			results.add(m.group(1));

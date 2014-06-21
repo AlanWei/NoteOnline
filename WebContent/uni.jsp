@@ -64,8 +64,8 @@
 					style="margin-left: 5px;">Submit</button>
 			</form>
 			<ul class="nav nav-pills pull-right top-nav" style="height: 50px;">
-				<li class="top-nav-item"><a href="#uni">University</a></li>
-				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="index.jsp#uni">University</a></li>
+				<li class="top-nav-item"><a href="index.jsp#mooc">MOOC</a></li>
 				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
 				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
 			</ul>

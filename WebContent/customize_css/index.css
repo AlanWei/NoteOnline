@@ -53,6 +53,13 @@
 	margin-top: 20px;
 }
 
+.anchor{
+	display: block;
+	top:-50px;
+	position: relative;
+	visibility: hidden;	
+}
+
 .uni-name>h4 {
 	font-size: 16px;
 	font-weight: 700;

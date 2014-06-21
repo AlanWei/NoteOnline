@@ -38,6 +38,8 @@
 <link rel="stylesheet" type="text/css"
 	href="bootstrap_css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="customize_css/note.css" />
+<script src="jquery/jquery-1.11.1.js" type="text/javascript"></script>
+<script src="customize_js/note.js" type="text/javascript"></script>
 <link rel="icon" href="image/favicon.png" type="image/x-icon">
 <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">-->
 <title>
@@ -61,12 +63,32 @@
 					style="margin-left: 5px;">Submit</button>
 			</form>
 			<ul class="nav nav-pills pull-right top-nav" style="height: 50px;">
-				<li class="top-nav-item"><a href="#uni">University</a></li>
-				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="index.jsp#uni">University</a></li>
+				<li class="top-nav-item"><a href="index.jsp#mooc">MOOC</a></li>
 				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
 				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
 			</ul>
 		</div>
+	</div>
+
+	<div class="catagory" style="margin-top: 50px;">
+		<ul class="nav_cool">
+			<li><a href="#">Catagory</a>
+				<ul>
+					<%
+						List<String> results = nDm.getHeader(noteContent);
+						List<String> r1 = nDm.getHref(noteContent);
+						for (int i=0; i<results.size();i++){
+					%>
+					<li><a href="#<%out.print(r1.get(i));%>"> <%
+ 	out.print(results.get(i));
+ %>
+					</a></li>
+					<%
+						}
+					%>
+				</ul></li>
+		</ul>
 	</div>
 
 	<div class="home"
@@ -75,42 +97,19 @@
 	<div class="container profile">
 		<div class="row">
 			<div class="col-md-4">
-				<img
+				<a href="uni.jsp"><img
 					src="image/uni/<%out.print(uniId);%>/<%out.print(uniId);%>_logo.jpg"
-					class="img-thumbnail">
+					class="img-thumbnail"></a>
 				<h1>
-					<a href="uni.jsp" style="color: #333333;"> <%
+					<%
  	out.print(courseCode);
  %>
-					</a>
 				</h1>
 				<h2>
 					<%
 						out.print(courseName);
 					%>
 				</h2>
-				<div class="container horizontal-line"></div>
-
-				<div class="bs-docs-sidebar hidden-print affix-top"
-					role="complementary">
-					<ul class="nav bs-docs-sidenav">
-						<%
-							List<String> results = nDm.getHeader(noteContent);
-							List<String> r1 = nDm.getHref(noteContent);
-							for (int i=0; i<results.size();i++){
-						%>
-						<li><a href="#<%out.print(r1.get(i));%>">
-						<%
- 							out.print(results.get(i));
-						%>
-						</a></li>
-						<%
-							}
-						%>
-					</ul>
-				</div>
-
-
 			</div>
 		</div>
 	</div>

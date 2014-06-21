@@ -83,8 +83,10 @@
 				Started Free</button>
 		</div>
 	</div>
-
-	<div class="container uni-list" id="uni">
+	
+	<a class="anchor" id="uni"></a>
+	
+	<div class="container uni-list">
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
@@ -168,7 +170,8 @@
 
 	<div class="container horizontal-line"></div>
 
-	<div class="container mooc" id="mooc">
+	<a class="anchor" id="mooc"></a>
+	<div class="container mooc">
 		<div id="moocCarousel" class="carousel slide pull right"
 			data-ride="carousel">
 			<!-- Indicators -->
