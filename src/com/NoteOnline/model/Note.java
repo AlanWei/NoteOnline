@@ -67,5 +67,4 @@ public class Note {
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
 	}
-	
 }

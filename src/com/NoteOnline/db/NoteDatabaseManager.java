@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.NoteOnline.model.Note;
 import com.mysql.jdbc.Connection;
@@ -111,4 +113,52 @@ public class NoteDatabaseManager {
 		}
 		return noteName;
 	}
+	
+	public String getNoteAuthor(int noteId) throws SQLException {
+		NoteDatabaseManager dm = new NoteDatabaseManager();
+		String s_noteId = Integer.toString(noteId);
+		String sql = "select note_author from note where note_id = "
+				+ s_noteId + ";";
+		ResultSet rs = dm.sqlQuery(sql);
+		String noteAuthor = null;
+		while (rs.next()) {
+			noteAuthor = rs.getString("note_author");
+		}
+		return noteAuthor;
+	}
+	
+	public Timestamp getNoteUpdateTime(int noteId) throws SQLException {
+		NoteDatabaseManager dm = new NoteDatabaseManager();
+		String s_noteId = Integer.toString(noteId);
+		String sql = "select update_time from note where note_id = "
+				+ s_noteId + ";";
+		ResultSet rs = dm.sqlQuery(sql);
+		
+		Timestamp noteUpdateTime = null;
+		while (rs.next()) {
+			noteUpdateTime = rs.getTimestamp("update_time");
+		}
+		return noteUpdateTime;
+	}
+	
+	public List<String> getHeader(String content){
+		List<String> results = new ArrayList<String>();
+		Pattern p = Pattern.compile("<strong>(.*?)</strong>");
+		Matcher m = p.matcher(content);
+		while (!m.hitEnd() && m.find()){
+			results.add(m.group(1));
+		}
+		return results;
+	}
+	
+	public List<String> getHref(String content){
+		List<String> results = new ArrayList<String>();
+		Pattern p = Pattern.compile("<h3 id=\"(.*?)\">");
+		Matcher m = p.matcher(content);
+		while (!m.hitEnd() && m.find()){
+			results.add(m.group(1));
+		}
+		return results;
+	}
+	
 }

@@ -20,31 +20,52 @@
 
 	<%
 		UniDatabaseManager dm = new UniDatabaseManager();
-			List<University> ul = dm.universityList();
-			List<Integer> uIdList = new ArrayList<Integer>();
-			List<String> uNameList = new ArrayList<String>();
-			List<String> uLocationList = new ArrayList<String>();
-			List<String> uIntroList = new ArrayList<String>();
-			
-			for (int i=0; i<ul.size(); i++){
-		int uId = ul.get(i).getId();
-		String uName = ul.get(i).getName();
-		String uLocation = ul.get(i).getLocation();
-		String uIntro = ul.get(i).getIntro();
+		List<University> ul = dm.universityList();
+		List<Integer> uIdList = new ArrayList<Integer>();
+		List<String> uNameList = new ArrayList<String>();
+		List<String> uLocationList = new ArrayList<String>();
+		List<String> uIntroList = new ArrayList<String>();
 		
-		uIdList.add(uId);
-		uNameList.add(uName);
-		uLocationList.add(uLocation);
-		uIntroList.add(uIntro);
-			}
+		for (int i=0; i<ul.size(); i++){
+			int uId = ul.get(i).getId();
+			String uName = ul.get(i).getName();
+			String uLocation = ul.get(i).getLocation();
+			String uIntro = ul.get(i).getIntro();
+			
+			uIdList.add(uId);
+			uNameList.add(uName);
+			uLocationList.add(uLocation);
+			uIntroList.add(uIntro);
+		}
 	%>
 
-	<div class="container header">
+	<!-- <div class="container header">
 		<div class="masthead">
 			<h1>
 				<a href="index.jsp" style="color: black;">NoteOnline</a>
 			</h1>
 			<ul class="nav nav-pills pull-right top-nav">
+				<li class="top-nav-item"><a href="#uni">University</a></li>
+				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
+				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
+			</ul>
+		</div>
+	</div>-->
+
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.jsp" style="color: #000000">NoteOnline</a>
+			</div>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default"
+					style="margin-left: 5px;">Submit</button>
+			</form>
+			<ul class="nav nav-pills pull-right top-nav" style="height: 50px;">
 				<li class="top-nav-item"><a href="#uni">University</a></li>
 				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
 				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
@@ -120,8 +141,9 @@
 		<div class="row">
 			<div class="uni-name">
 				<h4 class="col-md-4">
-					<img src="image/uni_icon/<% out.print(uIdList.get(3)); %>.jpg" class="icon"><a
-						href="uni.url?uni_id=<% out.print(uIdList.get(3)); %>"
+					<img src="image/uni_icon/<%out.print(uIdList.get(3));%>.jpg"
+						class="icon"><a
+						href="uni.url?uni_id=<%out.print(uIdList.get(3));%>"
 						style="color: #333333;"> <%
  	out.print(uNameList.get(3));
  %>

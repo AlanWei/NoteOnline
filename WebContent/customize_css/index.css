@@ -2,18 +2,8 @@
 	max-width: 1000px;
 }
 
-.container.header {
-	margin-top: 25px;
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.masthead>h1 {
-	font-size: 32px;
-	display: inline;
-	font-weight: bold;
-	line-height: 42px;
+.nav-pills>li {
+	margin-top: 5px;
 }
 
 .nav {
@@ -40,10 +30,10 @@
 }
 
 .intro>h3 {
-	padding-top: 90px;
+	padding-top: 120px;
 	font-size: 38px;
 	font-weight: 700;
-	margin-top: 30px;
+	margin-top: 0px;
 }
 
 .subtitle {
@@ -60,7 +50,7 @@
 }
 
 .container.uni-list {
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
 .uni-name>h4 {
@@ -92,11 +82,11 @@
 	padding-right: 5px;
 }
 
-.carousel-inner{
+.carousel-inner {
 	height: 120px;
 }
 
-.col-md-3.mooc-logo{
+.col-md-3.mooc-logo {
 	text-align: center;
 }
 

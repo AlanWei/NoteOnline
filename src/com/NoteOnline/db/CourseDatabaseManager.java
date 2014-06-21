@@ -83,18 +83,32 @@ public class CourseDatabaseManager {
 		}
 		return cList;
 	}
-	
-	public String getCourseName(int courseId) throws SQLException{
+
+	public String getCourseName(int courseId) throws SQLException {
 		NoteDatabaseManager dm = new NoteDatabaseManager();
 		String s_courseId = Integer.toString(courseId);
 		String sql = "select course_name from course where course_id = "
 				+ s_courseId + ";";
 		ResultSet rs = dm.sqlQuery(sql);
 		String courseName = null;
-		
-		while (rs.next()){
+
+		while (rs.next()) {
 			courseName = rs.getString("course_name");
 		}
 		return courseName;
+	}
+
+	public String getCourseCode(int courseId) throws SQLException {
+		NoteDatabaseManager dm = new NoteDatabaseManager();
+		String s_courseId = Integer.toString(courseId);
+		String sql = "select course_code from course where course_id = "
+				+ s_courseId + ";";
+		ResultSet rs = dm.sqlQuery(sql);
+		String courseCode = null;
+
+		while (rs.next()) {
+			courseCode = rs.getString("course_code");
+		}
+		return courseCode;
 	}
 }

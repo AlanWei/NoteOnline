@@ -2,18 +2,8 @@
 	max-width: 1000px;
 }
 
-.container.header {
-	margin-top: 25px;
-	margin-bottom: 20px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.masthead>h1 {
-	font-size: 32px;
-	display: inline;
-	font-weight: bold;
-	line-height: 42px;
+.nav-pills>li {
+	margin-top: 5px;
 }
 
 .nav {
@@ -27,21 +17,13 @@
 }
 
 .home {
-	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 100%;
 	height: 340px;
 	z-index: -1;
 }
 
-.container.profile {
-	text-align: left;
-	margin-top: -105px;
-	height: 280px;
-}
-
-.col-md-4.uni-logo>img{
+.col-md-4.uni-logo>img {
 	height: 160px;
 	width: 320px;
 }
@@ -57,14 +39,24 @@
 	color: #545454;
 }
 
-.container.course{
+.col-md-8{
+	padding: 0;
+}
+
+.container.profile {
+	text-align: left;
+	margin-top: -105px;
+	height: 280px;
+}
+
+.container.course {
 	margin-top: -160px;
 }
 
 .panel.panel-info {
-	margin-top: 30px;
-	margin-bottom: 0px;
-	margin-left: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: 10px;
 	margin-right: auto;
 }
 
@@ -90,7 +82,7 @@
 
 .row.contact2 {
 	margin-top: 30px;
-	margin-right : auto;
+	margin-right: auto;
 	margin-left: auto;
 	font-size: 14px;
 }
@@ -103,6 +95,6 @@
 	text-align: right;
 }
 
-#social>a{
+#social>a {
 	padding: 6px;
 }

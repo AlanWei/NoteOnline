@@ -51,20 +51,24 @@
 </head>
 <body>
 
-	<div class="container header">
-		<div class="masthead">
-			<h1>
-				<a href="index.jsp" style="color: black;">NoteOnline</a>
-			</h1>
-			<!--
-			<ul class="nav nav-pills pull-right top-nav">
-				<li class="top-nav-item"><a href="#university">University
-						list</a></li>
-				<li class="top-nav-item"><a href="#university">Your note</a></li>
-				<li class="top-nav-item"><a href="#university">Contact us</a></li>
-				<li class="top-nav-item"><a href="#university">Sign in</a></li>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.jsp" style="color: #000000">NoteOnline</a>
+			</div>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default"
+					style="margin-left: 5px;">Submit</button>
+			</form>
+			<ul class="nav nav-pills pull-right top-nav" style="height: 50px;">
+				<li class="top-nav-item"><a href="#uni">University</a></li>
+				<li class="top-nav-item"><a href="#mooc">MOOC</a></li>
+				<li class="top-nav-item"><a href="#uni">Your notes</a></li>
+				<li class="top-nav-item"><a href="#uni">Sign in</a></li>
 			</ul>
-			-->
 		</div>
 	</div>
 
@@ -113,10 +117,10 @@
 						<ul class="override ul">
 							<%
 								NoteDatabaseManager nDm = new NoteDatabaseManager();
-													List<Note> noteList = nDm.noteList(cIdList.get(i)); 
-													for (int j=0; j<noteList.size(); j++){
-														String noteName = noteList.get(j).getNoteName();
-														int noteId = noteList.get(j).getNoteId();
+								List<Note> noteList = nDm.noteList(cIdList.get(i)); 
+								for (int j=0; j<noteList.size(); j++){
+									String noteName = noteList.get(j).getNoteName();
+									int noteId = noteList.get(j).getNoteId();
 							%>
 							<li><a
 								href="note.url?course_id=<%out.print(cIdList.get(i));%>&note_id=<%out.print(noteId);%>">
