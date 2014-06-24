@@ -71,9 +71,9 @@
 		</div>
 	</div>
 
-	<div class="catagory" style="margin-top: 50px;">
+	<div class="catagory">
 		<ul class="nav_cool">
-			<li><a href="#">Catagory</a>
+			<li><a href="#"><Strong>Catalogue</Strong></a>
 				<ul>
 					<%
 						List<String> results = nDm.getHeader(noteContent);
