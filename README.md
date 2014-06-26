@@ -9,11 +9,14 @@ Help people learn professional knowledge in a more efficient way.
 2. National University of Singapore, Singapore, Singapre;
 3. Rice University, Houston, USA;
 4. University of Maryland, College Park, USA.
+
 ##Fisrt 2 MOOC
 1. Udacity;
 2. Coursera.
+
 ##Website Overall Structure:
 University - Course - Notes
+
 ##Notes Cover
 1. Organised revision conclusion;
 2. Detailed notes on lecture slides, like further explanation on theories. 
