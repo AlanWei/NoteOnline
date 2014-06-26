@@ -19,6 +19,6 @@ University - Course - Notes
 
 ##Notes Cover
 1. Organised revision conclusion;
-2. Detailed notes on lecture slides, like further explanation on theories. 
+2. Detailed notes on lecture slides, like further explanation on theories;
 3. Correct past year exam paper answer;
 4. Correct tutorial question answer.
